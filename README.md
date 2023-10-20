@@ -9,12 +9,11 @@ dateCreated: 2022-03-21T02:19:10.237Z
 ---
 
 # Introduction
+First of all, welcome everyone to join 'GeekPie_HPC.' This is a competition team that is technologically neutral and aspires to be on par with Tsinghua. While we value winning and losing, what we emphasize more is everyone's practical ability (proficiency in various tools) and communication skills (being good at brainstorming, taking responsibility, and contributing). If you need to spend the majority of your time boosting your GPA, this club is not for you. Since most of the competitions revolve around mid-term and final exams, we hope for a YOLO (You Only Live Once) spirit.
 
-首先，欢迎大家加入`GeekPie_HPC`，这是一个技术中立，立志和清华比肩的比赛队伍。我们重视输赢的同时，更着重培养的是大家的实践（对各种工具的熟练应用）能力，交流（擅长画饼，接锅和再造血）能力。如果你需要花绝大多数的时间卷 GPA，本社不欢迎你，由于比赛几乎所有时间都落在期中期末考试左右，我们希望的是 YOLO 的精神。
+Regarding how to be a good 'technical sharing officer,' whether in academia or research, value is created while brainstorming with others. The work you do only becomes valuable when it benefits others; otherwise, being a technical expert alone is pointless. We hope that everyone will cherish the opportunity to work with excellent people, see how others do things in the weekly Slack meetings, and then contribute in their own way.
 
-有关如何做一个[好的技术分享官](https://coolshell.cn/articles/17497.html)，无论是学术、科研，都是在和别人 brain storm 的同时产生价值。你做的工作，只有对别人产生了价值，别人才会 value 你，光做一个技术强者是毫无作用的。希望大家珍惜与优秀的人共事的机会，在 slack周会上看看别人是怎么做的，然后自己也贡献些力所能及的事。
-
-这里是 `GeekPie_HPC` 托管在 `github pages` 的第三个 wiki，有一部分在 geekpie 的 `wiki.js` 里，还有一小部分在 geekpie 校内服务器的conference 上，为了避免有一天运维删库跑路，所以先放 github 上。
+This is the third wiki of 'GeekPie_HPC' hosted on 'github pages,' with some of it in the 'wiki.js' on GeekPie, and a small part on the conference on the GeekPie campus server. In order to avoid the possibility of the server maintenance deleting the data one day, we have put it on GitHub for now.
 
 
 本 Wiki 的同时生成静态和动态页面
