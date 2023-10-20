@@ -1,0 +1,256 @@
+# what's ansible
+# How to use
+```bash
+[root@login top500-benchmark]# pip3 install ansible
+Collecting ansible
+  Obtaining dependency information for ansible from https://files.pythonhosted.org/packages/08/a2/35c6110299306db0495b61c57d24d042f57858923fbb1bee85347c1ed8bc/ansible-8.5.0-py3-none-any.whl.metadata
+  Downloading ansible-8.5.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting ansible-core~=2.15.5 (from ansible)
+  Obtaining dependency information for ansible-core~=2.15.5 from https://files.pythonhosted.org/packages/51/4a/21dd7477ff981c400894bdcfaaacb9183f7ce9653f6d143baea9ebd97225/ansible_core-2.15.5-py3-none-any.whl.metadata
+  Downloading ansible_core-2.15.5-py3-none-any.whl.metadata (7.0 kB)
+Collecting jinja2>=3.0.0 (from ansible-core~=2.15.5->ansible)
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 10.1 MB/s eta 0:00:00
+Requirement already satisfied: PyYAML>=5.1 in /usr/local/lib64/python3.9/site-packages (from ansible-core~=2.15.5->ansible) (6.0.1)
+Requirement already satisfied: cryptography in /usr/local/lib64/python3.9/site-packages (from ansible-core~=2.15.5->ansible) (41.0.3)
+Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from ansible-core~=2.15.5->ansible) (23.1)
+Requirement already satisfied: resolvelib<1.1.0,>=0.5.3 in /usr/lib/python3.9/site-packages (from ansible-core~=2.15.5->ansible) (0.5.4)
+Collecting importlib-resources<5.1,>=5.0 (from ansible-core~=2.15.5->ansible)
+  Downloading importlib_resources-5.0.7-py3-none-any.whl (24 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=3.0.0->ansible-core~=2.15.5->ansible)
+  Obtaining dependency information for MarkupSafe>=2.0 from https://files.pythonhosted.org/packages/de/63/cb7e71984e9159ec5f45b5e81e896c8bdd0e45fe3fc6ce02ab497f0d790e/MarkupSafe-2.1.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
+  Downloading MarkupSafe-2.1.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.0 kB)
+Requirement already satisfied: cffi>=1.12 in /usr/local/lib64/python3.9/site-packages (from cryptography->ansible-core~=2.15.5->ansible) (1.15.1)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.9/site-packages (from cffi>=1.12->cryptography->ansible-core~=2.15.5->ansible) (2.21)
+Downloading ansible-8.5.0-py3-none-any.whl (47.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.5/47.5 MB 21.7 MB/s eta 0:00:00
+Downloading ansible_core-2.15.5-py3-none-any.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 72.2 MB/s eta 0:00:00
+Downloading MarkupSafe-2.1.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Installing collected packages: MarkupSafe, importlib-resources, jinja2, ansible-core, ansible
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 1.1.1
+    Uninstalling MarkupSafe-1.1.1:
+      Successfully uninstalled MarkupSafe-1.1.1
+  Attempting uninstall: jinja2
+    Found existing installation: Jinja2 2.11.3
+    Uninstalling Jinja2-2.11.3:
+      Successfully uninstalled Jinja2-2.11.3
+  Attempting uninstall: ansible-core
+    Found existing installation: ansible-core 2.14.9
+    Uninstalling ansible-core-2.14.9:
+      Successfully uninstalled ansible-core-2.14.9
+Successfully installed MarkupSafe-2.1.3 ansible-8.5.0 ansible-core-2.15.5 importlib-resources-5.0.7 jinja2-3.1.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.2.1 -> 23.3
+[notice] To update, run: pip install --upgrade pip
+[root@login top500-benchmark]# ls
+ansible.cfg  dependencies  example.config.yml  example.hosts.ini  firewall  LICENSE  main.yml  overclock-pi.yml  README.md  tasks  templates
+[root@login top500-benchmark]# cp example.hosts.ini hosts.ini
+[root@login top500-benchmark]# cp example.config.yml config.yml
+[root@login top500-benchmark]# vim hosts.ini 
+[root@login top500-benchmark]# vim config.yml
+[root@login top500-benchmark]# ansible-playbook main.yml
+
+PLAY [Install linpack benchmark.] ********************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************
+fatal: [node-04.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-04.local: Name or service not known'
+  unreachable: true
+fatal: [node-05.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-05.local: Name or service not known'
+  unreachable: true
+fatal: [node-01.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-01.local: Name or service not known'
+  unreachable: true
+fatal: [node-02.localnode-03.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-02.localnode-03.local: Name or service not known'
+  unreachable: true
+
+PLAY RECAP *******************************************************************************************************************************************************
+node-01.local              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node-02.localnode-03.local : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node-04.local              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node-05.local              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
+[root@login top500-benchmark]# ls
+ansible.cfg  dependencies        example.hosts.ini  hosts.ini  main.yml          README.md  templates
+config.yml   example.config.yml  firewall           LICENSE    overclock-pi.yml  tasks
+[root@login top500-benchmark]# vim hosts.ini 
+[root@login top500-benchmark]# ansible-playbook main.yml
+
+PLAY [Install linpack benchmark.] ********************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************
+fatal: [node-04.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-04.local: Name or service not known'
+  unreachable: true
+fatal: [node-05.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-05.local: Name or service not known'
+  unreachable: true
+fatal: [compute-01.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-01.local: Name or service not known'
+  unreachable: true
+fatal: [node-02.localnode-03.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname node-02.localnode-03.local: Name or service not known'
+  unreachable: true
+
+PLAY RECAP *******************************************************************************************************************************************************
+compute-01.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node-02.localnode-03.local : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node-04.local              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node-05.local              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
+[root@login top500-benchmark]# vim config.yml 
+[root@login top500-benchmark]# vim hosts.ini 
+[root@login top500-benchmark]# ansible-playbook main.yml
+
+PLAY [Install linpack benchmark.] ********************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************
+fatal: [compute-01.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-01.local: Name or service not known'
+  unreachable: true
+fatal: [compute-02.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-02.local: Name or service not known'
+  unreachable: true
+fatal: [compute-03.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-03.local: Name or service not known'
+  unreachable: true
+fatal: [compute-05.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-05.local: Name or service not known'
+  unreachable: true
+fatal: [compute-04.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-04.local: Name or service not known'
+  unreachable: true
+
+PLAY RECAP *******************************************************************************************************************************************************
+compute-01.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-02.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-03.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-04.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-05.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
+[root@login top500-benchmark]# ansible-playbook main.yml
+
+PLAY [Install linpack benchmark.] ********************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************
+fatal: [compute-03.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-03.local: Name or service not known'
+  unreachable: true
+fatal: [compute-04.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-04.local: Name or service not known'
+  unreachable: true
+fatal: [compute-05.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-05.local: Name or service not known'
+  unreachable: true
+fatal: [compute-01.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-01.local: Name or service not known'
+  unreachable: true
+fatal: [compute-02.local]: UNREACHABLE! => changed=false 
+  msg: 'Failed to connect to the host via ssh: ssh: Could not resolve hostname compute-02.local: Name or service not known'
+  unreachable: true
+
+PLAY RECAP *******************************************************************************************************************************************************
+compute-01.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-02.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-03.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-04.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+compute-05.local           : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
+[root@login top500-benchmark]# ls
+ansible.cfg  dependencies        example.hosts.ini  hosts.ini  main.yml          README.md  templates
+config.yml   example.config.yml  firewall           LICENSE    overclock-pi.yml  tasks
+[root@login top500-benchmark]# vim config.yml 
+[root@login top500-benchmark]# vim hosts.ini 
+[root@login top500-benchmark]# ansible-playbook main.yml
+
+PLAY [Install linpack benchmark.] ********************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************
+The authenticity of host '10.0.0.100 (10.0.0.100)' can't be established.
+ED25519 key fingerprint is SHA256:YMI/v1DxkXpY5HraHwiMCStisMH5cu9Osplcr7O42Zk.
+This key is not known by any other names
+The authenticity of host '10.0.0.75 (10.0.0.75)' can't be established.
+ED25519 key fingerprint is SHA256:xL7kDFDmFdwDvG5lkrsoV5bboWXFR88DRlm6gE2HrTo.
+This key is not known by any other names
+The authenticity of host '10.0.0.28 (10.0.0.28)' can't be established.
+ED25519 key fingerprint is SHA256:z/aqsDoNjwpNjTMtJwiSWKxkX5sgrnXdaY+CS2aEE1o.
+This key is not known by any other names
+The authenticity of host '10.0.0.5 (10.0.0.5)' can't be established. 
+ED25519 key fingerprint is SHA256:c9Q8Ni1hvAZh37l9V+1DPHnV51SSjjILeOXf9e6ZDvw.
+This key is not known by any other names
+The authenticity of host '10.0.0.123 (10.0.0.123)' can't be established.
+ED25519 key fingerprint is SHA256:b4NdQ5IQAUEvEQSpZo4xZJ0x8Md3yR/fF35lQey8Fhg.
+This key is not known by any other names
+The authenticity of host '10.0.0.76 (10.0.0.76)' can't be established.
+ED25519 key fingerprint is SHA256:SYhKdzlUN9NgaEOs/PAZI7jnijLcET6GVRZiyH02NZY.
+This key is not known by any other names
+The authenticity of host '10.0.0.82 (10.0.0.82)' can't be established.
+ED25519 key fingerprint is SHA256:3eIox39Zl1AAi6KVU/WpGNtJ8yL+5CrYj7kWix7udR0.
+This key is not known by any other names
+The authenticity of host '10.0.0.109 (10.0.0.109)' can't be established.
+ED25519 key fingerprint is SHA256:oGS2zgZYEgAEEcV53RvaMdAbCgqesBAPNFPakkIfV3M.
+This key is not known by any other names
+The authenticity of host '10.0.0.9 (10.0.0.9)' can't be established. 
+ED25519 key fingerprint is SHA256:4raDEiBlbtVVwKWh2FKleE7C7E9yPGkPfMcW1uZnh5c.
+This key is not known by any other names
+The authenticity of host '10.0.0.140 (10.0.0.140)' can't be established.
+ED25519 key fingerprint is SHA256:wJPfZduUKYDSblXbMisuNVRVt+IQJLFiPCfx4TrlylQ.
+This key is not known by any other names
+The authenticity of host '10.0.0.185 (10.0.0.185)' can't be established.
+ED25519 key fingerprint is SHA256:fVKPX8bh0/OfqXBIfMhBZtEs3FwR3QyVjUjBRaRBxTo.
+This key is not known by any other names
+The authenticity of host '10.0.0.52 (10.0.0.52)' can't be established.
+ED25519 key fingerprint is SHA256:puydOlUJRDdZtD2JX1moJLbG1had9NUmI+o7CiIGAA4.
+This key is not known by any other names
+The authenticity of host '10.0.0.68 (10.0.0.68)' can't be established.
+ED25519 key fingerprint is SHA256:iLDtlxkHyaEqZFZSc0LNljIK9MTMrIhdKdiRPxGs89E.
+This key is not known by any other names
+The authenticity of host '10.0.0.96 (10.0.0.96)' can't be established.
+ED25519 key fingerprint is SHA256:yF/G6jAGDW7NOpsQT9rP2GbUFdquxSk0NwTilLp4Ni0.
+This key is not known by any other names
+The authenticity of host '10.0.0.239 (10.0.0.239)' can't be established.
+ED25519 key fingerprint is SHA256:Axl2GoU6dj5mdlU4T7qvF4s5fg/OoN8S9xZ7nt4u3Q8.
+This key is not known by any other names
+The authenticity of host '10.0.0.212 (10.0.0.212)' can't be established.
+ED25519 key fingerprint is SHA256:3p34DvYekM408X3q09kY46zmVI8S29wQ28lb4CWB7Qs.
+This key is not known by any other names
+The authenticity of host '10.0.0.36 (10.0.0.36)' can't be established.
+ED25519 key fingerprint is SHA256:OnzoYA9t+5p0Vs0lhxygkRccxIjl7Lzrf4aVsGPxKSk.
+This key is not known by any other names
+The authenticity of host '10.0.0.46 (10.0.0.46)' can't be established.
+ED25519 key fingerprint is SHA256:jAdKVzr4WqSFs8MFRKywzWTxdOftuOk5mtle1bKUCgc.
+This key is not known by any other names
+The authenticity of host '10.0.0.173 (10.0.0.173)' can't be established.
+ED25519 key fingerprint is SHA256:G57d4WrB7J2I4hc68GvRNqu/7vWczwP3b8SYmFvpZUY.
+This key is not known by any other names
+The authenticity of host '10.0.0.101 (10.0.0.101)' can't be established.
+ED25519 key fingerprint is SHA256:WlExbAnZynMyMD2ZLAuQPu4MA4k0xHu4KgxfbX28M0c.
+This key is not known by any other names
+The authenticity of host '10.0.0.147 (10.0.0.147)' can't be established.
+ED25519 key fingerprint is SHA256:uE9t4y/rhB1z3TBEt5lby6Tfo+o6EQLedBsZBDdousw.
+This key is not known by any other names
+The authenticity of host '10.0.0.90 (10.0.0.90)' can't be established.
+ED25519 key fingerprint is SHA256:J++GPWPFzsgyeSsaY/Uww0QX9yzWw2IGc1rHaKnfoOA.
+This key is not known by any other names
+The authenticity of host '10.0.0.26 (10.0.0.26)' can't be established.
+ED25519 key fingerprint is SHA256:YwF+3fK+yEQCbT6FE9pKkd5hRJON01l854iSoZxlteM.
+This key is not known by any other names
+The authenticity of host '10.0.0.135 (10.0.0.135)' can't be established.
+ED25519 key fingerprint is SHA256:JBYGC2OFnYsibRZg3mVu8aFYYcz3I8bymYKDrEbyiSw.
+This key is not known by any other names
+The authenticity of host '10.0.0.41 (10.0.0.41)' can't be established.
+ED25519 key fingerprint is SHA256:aoHxeCh7zK5WlyrAMkebnPHiyLgJ1tDKkf+hST/Cv4U.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+fatal: [10.0.0.100]: UNREACHABLE! => changed=false 
+  msg: |-
+    Failed to connect to the host via ssh: Warning: Permanently added '10.0.0.100' (ED25519) to the list of known hosts.
+    cc@10.0.0.100: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+  unreachable: true
+The authenticity of host '10.0.0.127 (10.0.0.127)' can't be established.
+```
