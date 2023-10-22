@@ -15,6 +15,9 @@ jobs:
       MDBOOK_VERSION: 0.4.29
       MDBOOK_LINKCHECK_VERSION: 0.7.7
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v2
       - name: Install mdbook and mdbook-linkcheck
@@ -31,4 +34,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
           enable_jekyll: false
-          permissions: write-all
